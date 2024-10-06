@@ -128,4 +128,4 @@ reflex
 streamlit-calendar
 twilio
 inference_sdk
-opencv-python
+opencv-python-headless
