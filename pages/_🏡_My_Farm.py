@@ -10,6 +10,8 @@ st.set_page_config(
 
 st.image('assets/farm.jpg', use_column_width=True)
 
+st.title('🏡 Farm overview')
+
 st.write('This page allows you to view the different coordinates and location on your farm and see individual details of each plot.')
 
 st.divider()

@@ -3,24 +3,16 @@ import pandas as pd
 import numpy as np
 import api.mongo_connection as MongoConnection
 
-
-if 'phone_number' not in st.session_state:
-    with open("phone.txt", 'r') as file:
-        text = file.read()
-    st.session_state.phone_number = text
-    # MongoConnection.get_one_data("number", "numberData", "number")
-
-
 st.set_page_config(
         page_title="Whatsapp Notifications",
         page_icon="💬",
 )
+st.image('assets/whats.jpg', use_column_width=True)
+st.title('💬 Whatsapp Notifications')
 
-st.title('Whatsapp Notifications')
 st.write("With crop connect you can also receive notifications to your phone via whatsapp")
 
 st.divider()
-
 
 st.write("\n\n")
 st.write("\n\n")
@@ -56,15 +48,13 @@ st.write("\n\n")
 
 st.subheader('Step 2: Save your phone number')
 st.write("Make sure to save your phone number below to receive notifications")
-st.session_state.phone_number = st.text_input("Add or update phone number:", value=st.session_state.phone_number)
+st.session_state.phone_number = st.text_input("Add or update phone number:")
 # Display the current phone number
 if st.button("Save Phone Number"):
     st.session_state.phone_number = str(st.session_state.phone_number)
-    with open("phone.txt", 'w') as file:
-        file.write(st.session_state.phone_number)
 
     try: 
-        # MongoConnection.insert_data({"phone_number": st.session_state.phone_number}, "number", "numberData")
+        MongoConnection.insert_data({"phone_number": st.session_state.phone_number}, "numberData", "number")
         st.success("Phone number saved!")
     except Exception as e:
         st.error(f"Error saving phone number: {e}")
