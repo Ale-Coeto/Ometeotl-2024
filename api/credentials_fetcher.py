@@ -43,8 +43,8 @@ class Credentials:
 
     def fetch_token() -> str:
         
-        if Credentials.token is not None:
-            return Credentials.token
+        # if Credentials.token is not None:
+        #     return Credentials.token
 
         username = st.secrets["username"]
         password = st.secrets["password"]
